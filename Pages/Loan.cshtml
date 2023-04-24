@@ -1,0 +1,41 @@
+@page
+@model LoanModel
+
+@{
+    ViewData["Title"] = "Prestamo";
+    Layout = "~/Pages/Shared/_LayoutUser.cshtml";
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    <div>
+        <h1 class="titulotes">Ya tienes un préstamo activo</h1>
+        <button class="presbot">Solicitar Prestamo</button>
+    </div>
+        <div class="formContainer">
+            <h2 class="title">Solicitar Prestamo</h2>
+            <div class="formContent">
+                <form action="post">
+                    <br>
+                    <select name="loanTime" class="formInput">
+                        <option disabled selected>Cantidad de Meses</option>
+                        <option value="6">6 Meses</option>
+                        <option value="12">12 Meses</option>
+                        <option value="24">24 Meses</option>
+                        <option value="36">36 Meses</option>
+                    </select>
+                    <br>
+                    <select name="loanOptions" class="formInput">
+                        <option disabled selected>Monto de Prestamo</option>
+                        <option value="5000">5,000</option>
+                        <option value="10000">10,000</option>
+                        <option value="50000">50,000</option>
+                        <option value="100000">100,000</option>
+                        <option value="500000">500,000</option>
+                    </select>
+                    <br>
+                    <button class="sususubton">Solicitar</button>
+                </form>
+            </div>
+        </div>
+</div>

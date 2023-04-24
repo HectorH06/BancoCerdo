@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+.tabloide {
+  margin-left: 200px;
+  margin-top: 50px;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  color: #888;
+  border: 1px #111;
+  border-collapse: collapse;
+  border-radius: 10px;
+  background-color: #222;
+}
+
+.tabloide th, td {
+  padding: 10px;
+}
+
+.tabloide th {
+  background-color: #666;
+  color: #CCC;
+}
+
+.tabloide th:first-child {
+  border-top-left-radius: 10px;
+}
+.tabloide th:last-child {
+  border-top-right-radius: 10px;
+}
+.tabloide tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.tabloidetr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.halfy {
+    margin: auto;
+}
+.halfy tr, th {
+    width: 50%;
+}

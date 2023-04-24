@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PiggyBank</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/generalPurpose.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
+</head>
+
+<body>
+    <img src="~/Icons/wall2.png" alt="" height="1080" width="1920" border="0" class="underground">
+    <nav>
+            <ul class="barrita" class="barrita barrita--closed" class="show">
+            <img src="~/Icons/Pig.png" alt="" height="50" width="50" border="0" class="piggyLogo">
+            <h2 class="barTitle">PiggyBank</h2>
+            <img src="~/Icons/User-Yellow.png" alt="" height="100" width="100" border="0" class="userImg">
+            <h3 class="name">Nombre</h3><br>
+                <li><a href="/UserIndex">Saldo de Cuenta</a></li>
+                <li><a href="/Loan">Solicitar un Prestamo</a></li>
+                <li><a href="#">Historial de Prestamos</a></li>
+                <li><a href="#">Información de Cuenta</a></li><br><br>
+                <li class="client"><a href="#">Cerrar Sesión</a></li>
+            </ul>
+    </nav>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+    <script>
+        const openBtn = document.getElementById('open-btn');
+        const barrita = document.querySelector('.barrita');
+
+        openBtn.addEventListener('click', () => {
+            barrita.classList.toggle('barrita--closed');
+        });
+    </script>
+
+</body>
+
+</html>

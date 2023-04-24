@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - PiggyBank</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/PiggyBank.styles.css" asp-append-version="true" />
+    </head>
+    <body>
+        <img src="~/Icons/wall.png" alt="" height="1080" width="1920" border="0" class="underground">
+        <header>
+            <button id="open-btn" class="open-btn"><img src="~/Icons/Menu.png" alt="" height="50" width="50" border="0"></button>
+            <img src="~/Icons/Pig.png" alt="" height="70" width="70" border="0"><a href="/" class="logo"><h1>PiggyBank</h1></a>
+            <nav>
+                <ul class="nav__links">
+                    <li class="client"><a href="/Register">+ Conviertete en Cliente</a></li>
+                    <li><a href="/Login">Acceder</a></li>
+                </ul>
+            </nav>
+
+        </header>
+        <nav>
+            <ul class="barrita" class="barrita barrita--closed" class="show">
+                <li><a  href="/"><img src="~/Icons/Pig2.png" alt="" height="120" width="120" border="0" class="center"></a> </li>
+                <li><a href="/UserIndex">Perfil</a></li>
+                <li><a href="/Loan">Préstamos</a></li>
+                <li><a href="EmpIndex">Más información</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <main role="main" class="">
+            @RenderBody()
+            </main>
+        </div>
+        <script>
+            const openBtn = document.getElementById('open-btn');
+            const barrita = document.querySelector('.barrita');
+
+            openBtn.addEventListener('click', () => {
+            barrita.classList.toggle('barrita--closed');
+            });
+        </script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>

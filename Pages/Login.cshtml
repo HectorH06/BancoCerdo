@@ -1,0 +1,23 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+    Layout = "~/Pages/Shared/_LoginLayout.cshtml";
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    <div class="formContainer">
+            <h2 class="title">Iniciar Sesion</h2>
+            <div class="formContent">
+                <form action="post">
+                    <br>
+                    <input type="text" class="formInput" placeholder="Numero de Cuenta">
+                    <br>
+                    <input type="password" class="formInput" placeholder="Contraseña">
+                    <br>
+                    <input class="submitButton" type="submit" name="SubmitButton">
+                </form>
+            </div>
+    </div>
+</div>
