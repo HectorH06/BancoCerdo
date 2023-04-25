@@ -25,7 +25,7 @@ public partial class PiggyDatabase : DbContext
 
     public virtual DbSet<Gerente> Gerentes { get; set; }
 
-    public virtual DbSet<InfoCuentum> InfoCuenta { get; set; }
+    public virtual DbSet<InfoCuentum> InfoCuentas { get; set; }
 
     public virtual DbSet<Prestamo> Prestamos { get; set; }
 

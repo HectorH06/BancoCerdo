@@ -1,29 +1,32 @@
 @page
 @model RegisterModel
+@using PiggyBank.Models
 
 @{
     ViewData["Title"] = "Registrarse";
     Layout = "~/Pages/Shared/_LoginLayout.cshtml";
     <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/siteLogin.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
 }
 
 <div>
     <div class="formContainer">
             <h2 class="title">Registrarse</h2>
             <div class="formContent">
-                <form action="post">
+                <form>
                     <br>
-                    <input type="text" class="formInput" placeholder="Nombre(s)">
+                    <input id="Nombres" type="text" class="formInput" placeholder="Nombre(s)">
                     <br>
-                    <input type="password" class="formInput" placeholder="Apellido Paterno">
+                    <input id="ApeP" type="text" class="formInput" placeholder="Apellido Paterno">
                     <br>
-                    <input type="password" class="formInput" placeholder="Apellido Materno">
+                    <input id="Apem" type="text" class="formInput" placeholder="Apellido Materno">
                     <br>
-                    <input type="password" class="formInput" placeholder="CURP">
+                    <input id="CURP" type="text" class="formInput" placeholder="CURP">
                     <br>
                     <input type="date" class=" formInput">
                     <br>
-                    <input class="submitButton" type="submit" name="SubmitButton">
+                    <input class="sususubton" type="submit" name="sususubton">
                 </form>
             </div>
     </div>

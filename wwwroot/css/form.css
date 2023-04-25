@@ -7,6 +7,7 @@
     width: 400px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
     background-color: #24252a;
+    color:aliceblue;
     padding: 0px 0px 5px 15px;
     box-sizing: border-box;
     border-radius: 8px;
@@ -36,27 +37,9 @@ h2{
     margin-top: 15%;
     text-align: center;
     width: 70%;
+    color:aliceblue;
 }
 
-
-.formInput{
-    display: block;
-    margin-bottom: 0px 0ox 15px 20px;
-    padding: 4px;
-    width: 80%;
-    height: 5%;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #d93275;
-    font-size: 12px;
-    background-color: #24252a;
-}
-.formInput
-
-select{
-    color: black;
-}
 .sususubton{
     background-color: #d93275;
     color: white;
@@ -71,4 +54,4 @@ select{
 .sususubton:hover{
     transition: 0.3s background-color ease-in-out;
     background-color: #b70053;
-  }
+}
