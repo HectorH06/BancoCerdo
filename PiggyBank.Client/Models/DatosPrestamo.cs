@@ -14,10 +14,10 @@ public partial class DatosPrestamo
     public long Nfolio { get; set; }
 
     [Column("Fecha_Expedicion", TypeName = "datetime")]
-    public byte[] FechaExpedicion { get; set; } = null!;
+    public DateTime FechaExpedicion { get; set; }
 
     [Column("Fecha_Aprobacion", TypeName = "datetime")]
-    public byte[] FechaAprobacion { get; set; } = null!;
+    public DateTime FechaAprobacion { get; set; }
 
     [Column(TypeName = "INT")]
     public long Folio { get; set; }
