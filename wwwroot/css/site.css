@@ -289,6 +289,7 @@ header{
   transition: 0.3s background-color ease-in-out;
   background-color: #b70053;
 }
+
 /*
 //======================================================================
 //                                                                      
@@ -324,6 +325,7 @@ header{
     position: relative;
     text-align:left;
     padding-left: 1%;
+    top: 30px;
     padding-top: 5px;
     align-content: center;
     position: absolute;
@@ -341,9 +343,9 @@ header{
   color: #55cc88;
 }
 .message{
-  position: absolute;
-  margin-right: 20%;
+  position: relative;
   top: 350px;
+  left: 475px;
   font-family: "Montserrat",sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -380,19 +382,4 @@ header{
   padding: 0px 0px 5px 15px;
   box-sizing: border-box;
   border-radius: 8px;
-}
-
-.formInput{
-  display: block;
-  margin-bottom: 0px 0ox 15px 20px;
-  padding: 4px;
-  width: 80%;
-  height: 5%;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #d93275;
-  font-size: 12px;
-  color: #CDBCBB;
-  background-color: #24252a;
 }
