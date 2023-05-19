@@ -323,12 +323,9 @@ header{
 
 .saldo{
     position: relative;
-    text-align:left;
+    text-align: center;
     padding-left: 1%;
     top: 30px;
-    padding-top: 5px;
-    align-content: center;
-    position: absolute;
     margin-left: 30%;
     right: 35%;
     height: 100px;
@@ -339,7 +336,6 @@ header{
     border-radius: 8px;
 }
 .stonks{
-  padding-left: 5%;
   color: #55cc88;
 }
 .message{

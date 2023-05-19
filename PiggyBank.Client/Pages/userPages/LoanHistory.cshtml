@@ -1,0 +1,62 @@
+@page
+@model LoanHistoryModel
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Historial";
+    Layout = "~/Pages/Shared/_LayoutUser.cshtml";
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+}
+@{
+    var db=new PiggyBank.Models.PiggyDatabase();
+    string? user=HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    var prestamosActivos=(from e in db.EstadoPrestamos 
+        join d in db.DatosPrestamos on e.Folio equals d.Folio
+        join p in db.Prestamos on e.Folio equals p.Folio
+        join c in db.Cuentas on d.SolicitadoPor equals c.NoCuenta
+        where c.NoCuenta==Int32.Parse(user)
+        select new
+        {
+            folio=e.Folio,
+            cantidad=p.Cantidad,
+            interes=p.Interes,
+            pagosPendientes=e.PagoPedientes,
+            fechaAprobacion=d.FechaAprobacion,
+            estado=e.Estado
+        }).ToList();
+}
+<div>
+    @{
+        <table class="tabloide">
+            <thead>
+                <tr>
+                    <th scope="col">Folio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Interes</th>
+                    <th scope="col">Pagos Pendientes</th>
+                    <th scope="col">Fecha de Aprobación</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in prestamosActivos)
+                {
+                    <tr>
+                        <td scope="row">@item.folio</td>
+                        <td>@item.cantidad</td>
+                        <td>@item.interes</td>
+                        <td>@item.pagosPendientes</td>
+                        <td>@item.fechaAprobacion</td>
+                        @if(item.estado==1)
+                        {
+                            <td>Pendiente</td>
+                        }
+                        else
+                        {
+                            <td>Pagado</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

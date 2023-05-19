@@ -9,7 +9,7 @@
   border: 1px #111;
   border-collapse: collapse;
   border-radius: 10px;
-  background-color: #222;
+  background-color: #2e2f33;
 }
 
 .tabloide th, td {
@@ -17,10 +17,13 @@
 }
 
 .tabloide th {
-  background-color: #666;
+  background-color: #24252a;
+  color: #d93275;
+}
+.tabloide td
+{
   color: #CCC;
 }
-
 .tabloide th:first-child {
   border-top-left-radius: 10px;
 }

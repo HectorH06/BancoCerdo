@@ -1,17 +1,39 @@
 @page
 @model LoanModel
+@using System.Security.Claims;
 
 @{
-    ViewData["Title"] = "Prestamo";
+    ViewData["Title"] = "Prestamos";
     Layout = "~/Pages/Shared/_LayoutUser.cshtml";
     <link href="~/css/form.css" rel="stylesheet" type="text/css" />
 }
 
+
+@{
+    var db = new PiggyBank.Models.PiggyDatabase();
+    string? user=HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    var prestamosActivos=(from e in db.EstadoPrestamos 
+        join d in db.DatosPrestamos on e.Folio equals d.Folio
+        join c in db.Cuentas on d.SolicitadoPor equals c.NoCuenta
+        where e.Estado==1 && c.NoCuenta==Int32.Parse(user)
+        select new
+        {
+            folio=e.Folio,
+            pagosRealizados=e.PagoRealizados,
+            pagosPendientes=e.PagoPedientes,
+            estado=e.Estado
+        }).ToList();
+}
 <div>
-    <div>
-        <h1 class="titulotes">Ya tienes un préstamo activo</h1>
-        <button class="presbot">Solicitar Prestamo</button>
-    </div>
+    @{
+    if(prestamosActivos?.Any()!=true)
+    {
+        <div>
+            <h1 class="titulotes">Ya tienes un préstamo activo</h1>
+        </div>
+    }
+    else
+    {
         <div class="formContainer">
             <h2 class="title">Solicitar Prestamo</h2>
             <div class="formContent">
@@ -38,4 +60,6 @@
                 </form>
             </div>
         </div>
+    }
+    }
 </div>

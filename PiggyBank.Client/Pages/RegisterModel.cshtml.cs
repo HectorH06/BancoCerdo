@@ -17,10 +17,10 @@ public class RegisterModel : PageModel
     [BindProperty]
     public Usuario User{get;set;}
     Account accountOptions=new Account();
-    public void OnPost()
+    public IActionResult OnPost()
     {
-        accountOptions.createAccount(User);
-        RedirectToPage();
+        accountOptions.createAccount(User); 
+        return Page();
     }
 
     public void OnGet()
