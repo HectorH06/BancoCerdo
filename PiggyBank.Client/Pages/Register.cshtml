@@ -1,0 +1,31 @@
+@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Registrarse";
+    Layout = "~/Pages/Shared/_LoginLayout.cshtml";
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    <div class="formContainer">
+            <h2 class="title">Registrarse</h2>
+            <div class="formContent">
+                <form method="post">
+                    <br>
+                    <input name="NombreS" type="text" class="formInput" placeholder="Nombre(s)">
+                    <br>
+                    <input name="ApellidoPaterno" type="text" class="formInput" placeholder="Apellido Paterno">
+                    <br>
+                    <input name="ApellidoMaterno" type="text" class="formInput" placeholder="Apellido Materno">
+                    <br>
+                    <input name="Curp" type="text" class="formInput" placeholder="CURP">
+                    <br>
+                    <input name="FechaDeNacimiento" type="date" class=" formInput">
+                    <br>
+                    <input class="sususubton" type="submit" name="sususubton">
+                </form>
+            </div>
+    </div>
+</div>

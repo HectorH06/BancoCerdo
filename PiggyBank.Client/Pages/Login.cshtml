@@ -1,0 +1,25 @@
+@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model LoginModel
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+    Layout = "~/Pages/Shared/_LoginLayout.cshtml";
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/siteLogin.css" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    <div class="formContainer">
+            <h2 class="title">Iniciar Sesion</h2>
+            <div class="formContent">
+                <form method="post">
+                    <br>
+                    <input name="noCuenta" type="text" class="formInput" placeholder="Numero de Cuenta">
+                    <br>
+                    <input name="password" type="password"  class="formInput" placeholder="Contraseña">
+                    <br>
+                    <input class="sususubton" type="submit" name="sususubton">
+                </form>
+            </div>
+    </div>
+</div>

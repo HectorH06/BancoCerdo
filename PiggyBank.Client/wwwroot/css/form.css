@@ -1,0 +1,78 @@
+.formContainer{
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    margin-left: 27%;
+    height: 450px;
+    width: 400px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+    background-color: #24252a;
+    color:aliceblue;
+    padding: 0px 0px 5px 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.formInput{
+    display: block;
+    margin-bottom: 0px 0ox 15px 20px;
+    padding: 4px;
+    width: 80%;
+    height: 5%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d93275;
+    font-size: 12px;
+    color: #CDBCBB;
+    background-color: #24252a;
+}
+
+.botoncito{
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    margin-left: 27%;
+    height: 450px;
+    width: 400px;
+    padding: 0px 0px 5px 15px;
+    box-sizing: border-box;
+}
+
+h2{
+    color: #d93275;
+    font-weight: bold;
+
+}
+
+.title{
+    padding-top: 15px;
+    text-align: center;
+}
+.formContent{
+    display: inline-block;
+    align-content: center;
+    margin-top: 15%;
+    margin-left: 10%;
+    text-align: center;
+    width: 70%;
+    color:aliceblue;
+}
+
+.sususubton{
+    position: relative;
+    right: 26px;
+    background-color: #d93275;
+    color: white;
+    width: 60%;
+    height: 8%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.sususubton:hover{
+    transition: 0.3s background-color ease-in-out;
+    background-color: #b70053;
+    padding-bottom: 3px;
+    padding-left: 3px;
+}
