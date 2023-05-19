@@ -63,7 +63,14 @@
                                 <td scope="row">@item.folio</td>
                                 <td>@item.pagosRealizados</td>
                                 <td>@item.pagosPendientes</td>
-                                <td>@item.estado</td>
+                                @if(item.estado==1)
+                                {
+                                    <td>Pendiente</td>
+                                }
+                                else
+                                {
+                                    <td>Pagado</td>
+                                }
                                 <td>Nose</td>
                             </tr>
                         </tbody>

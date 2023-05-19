@@ -19,33 +19,44 @@
             folio=e.Folio,
             cantidad=p.Cantidad,
             interes=p.Interes,
-            pagosRealizados=e.PagoRealizados,
             pagosPendientes=e.PagoPedientes,
             fechaAprobacion=d.FechaAprobacion,
             estado=e.Estado
         }).ToList();
 }
 <div>
-    <div class="state">
+    @{
         <table class="tabloide">
             <thead>
                 <tr>
                     <th scope="col">Folio</th>
-                    <th scope="col">Pagos Realizados</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Interes</th>
                     <th scope="col">Pagos Pendientes</th>
+                    <th scope="col">Fecha de Aprobación</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Fecha</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td scope="row">eeee</td>
-                    <td>peko</td>
-                    <td>asdas</td>
-                    <td>asdasd</td>
-                    <td>Nose</td>
-                </tr>
+                @foreach (var item in prestamosActivos)
+                {
+                    <tr>
+                        <td scope="row">@item.folio</td>
+                        <td>@item.cantidad</td>
+                        <td>@item.interes</td>
+                        <td>@item.pagosPendientes</td>
+                        <td>@item.fechaAprobacion</td>
+                        @if(item.estado==1)
+                        {
+                            <td>Pendiente</td>
+                        }
+                        else
+                        {
+                            <td>Pagado</td>
+                        }
+                    </tr>
+                }
             </tbody>
         </table>
-    </div>
+    }
 </div>
