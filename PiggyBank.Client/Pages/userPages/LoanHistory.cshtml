@@ -9,7 +9,7 @@
 @{
     var db=new PiggyBank.Models.PiggyDatabase();
     string? user=HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-    var prestamosActivos=(from e in db.EstadoPrestamos 
+    var prestamos=(from e in db.EstadoPrestamos 
         join d in db.DatosPrestamos on e.Folio equals d.Folio
         join p in db.Prestamos on e.Folio equals p.Folio
         join c in db.Cuentas on d.SolicitadoPor equals c.NoCuenta
@@ -24,9 +24,14 @@
             estado=e.Estado
         }).ToList();
 }
-<div>
     @{
-        <table class="tabloide">
+        if(prestamos?.Any()!=true)
+        {
+            <h2>No tienes Prestamos</h2>
+        }
+        else
+        {
+            <table class="tabloide">
             <thead>
                 <tr>
                     <th scope="col">Folio</th>
@@ -38,7 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in prestamosActivos)
+                @foreach (var item in prestamos)
                 {
                     <tr>
                         <td scope="row">@item.folio</td>
@@ -57,6 +62,6 @@
                     </tr>
                 }
             </tbody>
-        </table>
+        </table>       
+        }
     }
-</div>
