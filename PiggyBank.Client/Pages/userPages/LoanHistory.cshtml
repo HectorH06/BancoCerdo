@@ -1,0 +1,51 @@
+@page
+@model LoanHistoryModel
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Historial";
+    Layout = "~/Pages/Shared/_LayoutUser.cshtml";
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+}
+@{
+    var db=new PiggyBank.Models.PiggyDatabase();
+    string? user=HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    var prestamosActivos=(from e in db.EstadoPrestamos 
+        join d in db.DatosPrestamos on e.Folio equals d.Folio
+        join p in db.Prestamos on e.Folio equals p.Folio
+        join c in db.Cuentas on d.SolicitadoPor equals c.NoCuenta
+        where c.NoCuenta==Int32.Parse(user)
+        select new
+        {
+            folio=e.Folio,
+            cantidad=p.Cantidad,
+            interes=p.Interes,
+            pagosRealizados=e.PagoRealizados,
+            pagosPendientes=e.PagoPedientes,
+            fechaAprobacion=d.FechaAprobacion,
+            estado=e.Estado
+        }).ToList();
+}
+<div>
+    <div class="state">
+        <table class="tabloide">
+            <thead>
+                <tr>
+                    <th scope="col">Folio</th>
+                    <th scope="col">Pagos Realizados</th>
+                    <th scope="col">Pagos Pendientes</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">eeee</td>
+                    <td>peko</td>
+                    <td>asdas</td>
+                    <td>asdasd</td>
+                    <td>Nose</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
