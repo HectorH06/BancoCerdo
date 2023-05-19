@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using PiggyBank.Models;
+using PiggyBank.Pages;
 
 
 namespace PiggyBank.Client
@@ -24,9 +25,14 @@ namespace PiggyBank.Client
             };
             user.NoCuenta=newID;
             db.Cuentas.Add(cuenta);
-            db.InfoCuenta.Add(infocuenta);
+            db.InfoCuentas.Add(infocuenta);
             db.Usuarios.Add(user);
             db.SaveChanges();
+        }
+
+        public void LogIn(Credential credentials)
+        {
+
         }
     }
 }

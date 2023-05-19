@@ -1,0 +1,75 @@
+@page
+@model UserIndexModel
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Tu página principal";
+    Layout = "~/Pages/Shared/_LayoutUser.cshtml";
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+}
+
+<!--Code-->
+@{
+    //Saldo
+    var db=new PiggyBank.Models.PiggyDatabase();
+    string? user=HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    var saldoUser=db.InfoCuentas
+        .Where(s=>s.NoCuenta.Equals(Int32.Parse(user)))
+            .Select(s=>s.Saldo);
+    string saldo=String.Format("{0:0,0.00}",saldoUser.First());
+    //Prestamos
+    var prestamosActivos=(from e in db.EstadoPrestamos 
+        join d in db.DatosPrestamos on e.Folio equals d.Folio
+        join c in db.Cuentas on d.SolicitadoPor equals c.NoCuenta
+        where e.Estado==1 
+        select new
+        {
+            folio=e.Folio,
+            pagosRealizados=e.PagoRealizados,
+            pagosPendientes=e.PagoPedientes,
+            estado=e.Estado
+        }).ToList();
+}
+
+<div>
+    <div class="saldo">
+        <h2>Saldo</h2>
+        <h2 class="stonks">$@saldo</h2>
+    </div>
+    @{
+        if(prestamosActivos?.Any()!=true)
+        {
+            <div class="message">
+                <h1>No tienes prestamos activos</h1>
+            </div>
+        }
+        else
+        {
+            foreach (var item in prestamosActivos)
+            {
+                <h2 id="stateMessagge">Estado del Prestamo:</h2>
+                <div class="state">
+                    <table class="tabloide">
+                        <thead>
+                            <tr>
+                                <th scope="col">Folio</th>
+                                <th scope="col">Pagos Realizados</th>
+                                <th scope="col">Pagos Pendientes</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">@item.folio</td>
+                                <td>@item.pagosRealizados</td>
+                                <td>@item.pagosPendientes</td>
+                                <td>@item.estado</td>
+                                <td>Nose</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+        }
+    }  
+</div>

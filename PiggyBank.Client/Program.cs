@@ -3,13 +3,20 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options=>
-    {
-        options.LoginPath="/Login";
-        options.Cookie.Name="Token";
+builder.Services.AddAuthentication("PiggyCookie")
+    .AddCookie("PiggyCookie", options => {
+        options.Cookie.Name="PiggyCookie";
+        options.LoginPath = "/Login";        
+        options.AccessDeniedPath = "/Register";
     });
+
+builder.Services.AddAuthorization(options=>
+{
+    options.AddPolicy("UnauthorizedAccount",
+        policy=>policy.RequireClaim("Estado","1"));
+});
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,16 +30,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapDefaultControllerRoute();
+app.MapControllers();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
-app.MapRazorPages();
 
 app.Run();

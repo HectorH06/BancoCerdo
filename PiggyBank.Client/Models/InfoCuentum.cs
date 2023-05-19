@@ -16,7 +16,7 @@ public partial class InfoCuentum
     public long NoCuenta { get; set; }
 
     [Column(TypeName = "pesos")]
-    public float Saldo { get; set; }
+    public double? Saldo { get; set; }
 
     [Column(TypeName = "INT")]
     public long Estado { get; set; }

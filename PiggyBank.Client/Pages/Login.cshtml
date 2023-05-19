@@ -1,4 +1,5 @@
 @page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model LoginModel
 @{
     ViewData["Title"] = "Iniciar Sesion";
@@ -11,11 +12,11 @@
     <div class="formContainer">
             <h2 class="title">Iniciar Sesion</h2>
             <div class="formContent">
-                <form action="post">
+                <form method="post">
                     <br>
-                    <input type="text" class="formInput" placeholder="Numero de Cuenta">
+                    <input name="noCuenta" type="text" class="formInput" placeholder="Numero de Cuenta">
                     <br>
-                    <input type="password" class="formInput" placeholder="Contraseña">
+                    <input name="password" type="password"  class="formInput" placeholder="Contraseña">
                     <br>
                     <input class="sususubton" type="submit" name="sususubton">
                 </form>
