@@ -13,26 +13,26 @@ namespace PiggyBank.Client
         }
         protected int NewID()
         {
-            var db=new PiggyBank.Models.PiggyDatabase();
-            Random random=new Random();
+            var db = new PiggyBank.Models.PiggyDatabase();
+            Random random = new Random();
             int NoCuenta;
             IQueryable<long> exist;
-            do{
-            NoCuenta=random.Next(1000000,9999999);
-            exist=from s in db.Cuentas where s.NoCuenta==NoCuenta select s.NoCuenta;
-            }while(exist.Count()>0);
+            do {
+                NoCuenta = random.Next(1000000, 9999999);
+                exist = from s in db.Cuentas where s.NoCuenta == NoCuenta select s.NoCuenta;
+            } while (exist.Count() > 0);
             return NoCuenta;
         }
         protected int NewFolio()
         {
-            var db=new PiggyBank.Models.PiggyDatabase();
-            Random random=new Random();
+            var db = new PiggyBank.Models.PiggyDatabase();
+            Random random = new Random();
             int folio;
             IQueryable<long> exist;
-            do{
-            folio=random.Next(100000000,999999999);
-            exist=from s in db.Prestamos where s.Folio==folio select s.Folio;
-            }while(exist.Count()>0);
+            do {
+                folio = random.Next(100000000, 999999999);
+                exist = from s in db.Prestamos where s.Folio == folio select s.Folio;
+            } while (exist.Count() > 0);
             return folio;
         }
     }
